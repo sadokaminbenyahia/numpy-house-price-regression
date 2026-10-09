@@ -58,6 +58,7 @@ def append_column(X, col):
     pass
 
 # Step 6 - one_hot_encode
+import numpy as np
 def one_hot_encode(labels):
     # TODO: Convert a 1-D array of categorical labels into a dense binary one-hot matrix.
     N=labels.shape[0]
@@ -186,8 +187,17 @@ def prepare_cleaned_features(X, iqr_k=1.5):
     X=clip_columns(X,lr,up)
     return X
 
-# Step 20 - assemble_feature_matrix (not yet solved)
-# TODO: implement
+# Step 20 - assemble_feature_matrix
+def assemble_feature_matrix(X_num, ratio_num_idx, ratio_den_idx, cat_labels=None):
+    # TODO: build an extended feature matrix by appending a derived ratio...
+    numerator=X_num[:,ratio_num_idx]
+    denominator=X_num[:,ratio_den_idx]
+    ratio=make_ratio_feature(numerator,denominator)
+    X_num=append_column(X_num,ratio)
+    if not (cat_labels==None):
+        matrix=one_hot_encode(cat_labels)
+        X_num=numpy.hstack([X_num,matrix])
+    return X_num
 
 # Step 21 - make_train_val_test (not yet solved)
 # TODO: implement
