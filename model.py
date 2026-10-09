@@ -194,9 +194,9 @@ def assemble_feature_matrix(X_num, ratio_num_idx, ratio_den_idx, cat_labels=None
     denominator=X_num[:,ratio_den_idx]
     ratio=make_ratio_feature(numerator,denominator)
     X_num=append_column(X_num,ratio)
-    if not (cat_labels==None):
+    if  (cat_labels is not None):
         matrix=one_hot_encode(cat_labels)
-        X_num=numpy.hstack([X_num,matrix])
+        X_num=np.hstack([X_num,matrix])
     return X_num
 
 # Step 21 - make_train_val_test (not yet solved)
