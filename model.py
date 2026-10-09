@@ -49,8 +49,13 @@ def make_ratio_feature(numerator, denominator, eps=1e-8):
     return(numerator/(denominator+eps))
     pass
 
-# Step 5 - append_column (not yet solved)
-# TODO: implement
+# Step 5 - append_column
+def append_column(X, col):
+    # TODO: Horizontally append one 1-D feature column onto a design matrix.
+    X_copy=X.copy()
+    X_copy=np.column_stack([X_copy,col])
+    return X_copy
+    pass
 
 # Step 6 - one_hot_encode (not yet solved)
 # TODO: implement
