@@ -57,8 +57,20 @@ def append_column(X, col):
     return X_copy
     pass
 
-# Step 6 - one_hot_encode (not yet solved)
-# TODO: implement
+# Step 6 - one_hot_encode
+def one_hot_encode(labels):
+    # TODO: Convert a 1-D array of categorical labels into a dense binary one-hot matrix.
+    N=labels.shape[0]
+    Categories=np.unique(labels)
+    C=Categories.shape[0]
+    matrix=np.zeros((N,C),dtype=float)
+    for i in range(N):
+        j=np.where(Categories==labels[i])[0]
+        matrix[i][j]=1.0
+    return matrix
+
+
+    pass
 
 # Step 7 - fit_standardizer (not yet solved)
 # TODO: implement
